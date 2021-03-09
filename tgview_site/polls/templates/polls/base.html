@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+        <title>{% block title %}Emmanuel Steiner Robles{% endblock %}</title>
+    </head>
+
+    <body>
+        <div id="sidebar" class="top-bar">
+            {% block sidebar %}
+            <div class="top-bar-item emm-name">
+                <div>Emmanuel Steiner Robles</div>
+            </div>
+            <div class="top-bar-item">
+                <a href="/polls">Home</a>
+            </div>
+            <div class="top-bar-item">
+                <a href="/blog">Bloggers</a>
+            </div>
+
+            {% endblock %}
+        </div>
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

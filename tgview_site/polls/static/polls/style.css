@@ -133,6 +133,7 @@ body {
 	font-weight: 100;
 	font-size: 50px;
 	color: #4D4D4D;
+	margin:0;
 }
 
 b{
@@ -140,9 +141,15 @@ b{
 	font-size: 150px;
 	font-weight: 100;
 }
-.box {
+.emm-name {
+	font-weight: 300;
+}
+.top-bar {
 	display: flex;
-	flex-flow: column;
-	height: 100%;
-	margin: 20px;
+	flex-flow: row;
+	/*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+.top-bar-item {
+	flex-grow:0;
+	margin: 0px 30px 0px 0px;
 }

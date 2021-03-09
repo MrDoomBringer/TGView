@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% load static %}
+{% extends "./base.html" %}
 
-        <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-    </head>
-    <body>
+{% block title %}Polls Index{% endblock %}
+
+{% block content %}
         <h1>{{ question.question_text }}</h1>
 
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -18,5 +15,5 @@
         {% endfor %}
         <input type="submit" value="Vote">
         </form>
-    </body>
-</html>
+
+{% endblock %}
