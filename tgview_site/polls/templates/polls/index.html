@@ -3,16 +3,51 @@
 {% block title %}Polls Index{% endblock %}
 
 {% block content %}
-
-
-    {% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-    {% else %}
-        <p>No polls are available.</p>
-    {% endif %}
+    {% load static %}
+    <hr id="Home"/>
+    <div class = "navholder">
+        
+        <div class = "nav">
+            <div class="navbutton">
+                <a href="#Home">Home</a>
+            </div>
+            <div class="navbutton">
+                <a href="#About">About Me</a>
+            </div>
+            <div class="navbutton">
+                <a href="#Projects">Projects</a>
+            </div>
+            <div class="navbutton">
+                <a href="#Resume">Resume</a>
+            </div>
+        </div>
+        <div class = "navscroll">
+            <div class = "nav_circle"></div>
+        </div>
+    </div>
+    <video playsinline autoplay muted loop poster="{% static 'polls/images/bg_poster.jpg' %}" id="bgvid">
+        <source src="{% static 'polls/images/background.webm' %}" type="video/webm">
+    </video>
+    <div class="content">  
+        <div class="center_content"
+            <p>Hello!</p>
+            <hr id="About"/>
+            <br/>
+            <p>Hello!</p>
+            <div class="floatbox_content">
+            <p> Hi here! </p>
+            </div>
+            <br/><p>Hello!</p>
+            <br/><p>Hello!</p>
+            <br/><p>Hello!</p>
+            <hr id="Projects"/>
+            <br/>r/><p>Hello!</p>
+            <br/><p>Hello!</p>
+            <br/>r/><p>Hello!</p>
+            <br/><p>Hello!</p>
+            <hr id="Resume"/>
+            <br/>
+        </div>
+    </div>
 
 {% endblock %}

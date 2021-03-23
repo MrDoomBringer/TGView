@@ -1,0 +1,108 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% comment %}
+<script src="{% static 'polls/script.js' %}"></script>
+<script src="{% static 'polls/nav_button.js' %}"></script>
+{% endcomment %}
+<script>
+var next_position;
+var position_list;
+var nav_buttons;
+var a_marks;
+
+function setup()
+{
+
+    a_marks = document.getElementsByTagName("a");
+    nav_buttons = document.getElementsByClassName("navbutton");
+    position_list = [];
+    next_position = 0;
+    var top = 0;
+    for (ele of a_marks)
+    {
+        /*var local_position = a_tag.getBoundingClientRect();
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        position_list += local_position.top - bodyRect.top;*/
+        while(ele.tagName != "BODY") {
+            top += ele.offsetTop;
+            ele = ele.offsetParent;
+            
+            console.log(ele);
+        }
+        
+        console.log(top);
+        position_list.push(top);
+    }
+
+}
+
+function scroll_circle(){
+    var prev = 0;
+    var prev_nav_button;
+    var current_pos = window.scrollY;
+    for (var i=0; i < position_list.length; i++)
+    {
+        var position = position_list[i];
+        console.log(current_pos + " " + position);
+        if (current_pos < position)
+        {
+            console.log("okay!");
+            if (i > 0)
+                prev = position_list[i-1];
+            next_position = position;
+            prev_nav_button = nav_buttons[i];
+            break;
+        }
+    }
+    
+    var circle = document.getElementsByClassName("nav_circle");
+
+    if (prev_nav_button){
+        console.log("yay");
+        var range = next_position - prev;
+        next_position -= prev;
+        current_pos -= prev;
+        var percent = current_pos / next_position;
+        
+        var nav_pos = prev_nav_button.getBoundingClientRect();
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var start = nav_pos.top + scrollTop;
+        circle[0].top = start + (percent * range);    
+    }
+
+}
+</script>
+<script>
+$(document).ready(function(){       
+    var scroll_pos = 0;
+    setup();
+    $(document).scroll(function() {
+        scroll_pos = $(this).scrollTop();
+        nav_class = ".nav"
+        nav_button_class = ".navbutton"
+        scroll_height = $(window).height();
+        nav_circle_class = ".nav_circle";
+        total_height = document.body.scrollHeight;
+        //$(nav_circle_class).css('top', (scroll_pos*80)/total_height+'%');
+        scroll_circle();
+        if(scroll_pos < scroll_height) {
+            //$(nav_class).css('border', 'none');
+            //$(nav_class).css('background-color', 'transparent');
+            $(nav_circle_class).css('background-color', 'white');
+            $(nav_button_class).css('color', 'white');
+            //$(nav_class).css('border', '1px solid transparent');
+            
+        }else if (scroll_pos > scroll_height * 2) {
+            //$(nav_class).css('background-color', 'white');
+            $(nav_circle_class).css('background-color', '#E06C75');
+            $(nav_button_class).css('color', '#E06C75');
+        }
+        else if(scroll_pos > scroll_height) {
+            //$(nav_class).css('border', '1px solid #ABB2BF');
+            //$(nav_class).css('background-color', '#282C34');
+            $(nav_circle_class).css('background-color', 'white');
+            $(nav_button_class).css('color', 'white');
+        } 
+    });
+});
+</script>

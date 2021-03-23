@@ -2,28 +2,19 @@
 <html lang="en">
     <head>
         {% load static %}
-
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
         <title>{% block title %}Emmanuel Steiner Robles{% endblock %}</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{% static 'polls/script.js' %}"></script>
+        <script src="{% static 'polls/nav_button.js' %}"></script>
     </head>
 
     <body>
-        <div id="sidebar" class="top-bar">
-            {% block sidebar %}
-            <div class="top-bar-item emm-name">
-                <div>Emmanuel Steiner Robles</div>
-            </div>
-            <div class="top-bar-item">
-                <a href="/polls">Home</a>
-            </div>
-            <div class="top-bar-item">
-                <a href="/blog">Bloggers</a>
-            </div>
-
-            {% endblock %}
-        </div>
-
-        <div id="content">
+        <div>
             {% block content %}{% endblock %}
         </div>
     </body>
